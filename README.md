@@ -263,14 +263,15 @@ mutation CreateCustomer($input: CreateCustomerInput!) {
 
 ```mermaid
 flowchart LR
-    A[Query: customers] --> B{Status?}
-    B -->|UNDER_ANALYSIS| C[Aguardar]
-    B -->|PENDING_ACTION| D[Ir para Fase 4]
-    B -->|COMPLETE| E[Ir para Fase 5]
-    B -->|REJECTED| F[Fim]
-    C --> A
+    Q[Opção 1: Query customers] --> Status{Status?}
+    W[Opção 2: Receber Webhooks] --> Status
     
-    style B fill:#2196F3
+    Status -->|UNDER_ANALYSIS| Wait[Aguardar]
+    Status -->|PENDING_ACTION<br/>N002/N003| Phase4[Ir para Fase 4]
+    Status -->|COMPLETE<br/>N006| Phase5[Ir para Fase 5]
+    Status -->|REJECTED<br/>N001| End[Fim]
+    
+    style Status fill:#2196F3
 ```
 
 ### 3.1. Verificar Status do Onboarding (Query)
