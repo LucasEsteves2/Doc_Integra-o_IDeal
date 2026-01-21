@@ -271,6 +271,8 @@ flowchart LR
     Status -->|COMPLETE<br/>N006| Phase5[Ir para Fase 5]
     Status -->|REJECTED<br/>N001| End[Fim]
     
+    style Q fill:#9C27B0
+    style W fill:#9C27B0
     style Status fill:#2196F3
 ```
 
