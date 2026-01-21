@@ -40,7 +40,7 @@ flowchart TD
     
     Decision -->|REJECTED<br/>N001| Rejected[Fim: Rejeitado]
     
-    Terms --> Sign[agreeToTermVersion + OTP<br/>Para cada termo]
+    Terms --> Sign[Confirmar termos <br/>agreeToTermVersion + OTP]
     Sign --> Active[N007: Cliente Ativo]
     Active --> Bank[FASE 6: Conta Bancária<br/>Opcional]
     Bank --> End[Processo Completo]
@@ -406,9 +406,9 @@ mutation RenewCustomer($input: RenewCustomerInput!) {
 
 ```mermaid
 flowchart LR
-    A[Webhook N006] --> B[pendingAgreements]
-    B --> C[Para cada termo]
-    C --> D[agreeToTermVersion + OTP]
+    A[Webhook N006] --> B[Consultar termos pendentes]
+    B --> C[Para cada termo:]
+    C --> D[Confirmar assinatura<br/>agreeToTermVersion + OTP]
     D --> E[Webhook N007: Ativo]
     
     style D fill:#9C27B0
